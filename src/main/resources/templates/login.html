@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>登录界面</title>
+<link href="#" th:href="@{/bootstrap/css/bootstrap.min.css}"
+	rel="stylesheet">
+<link href="/tickets/empMgr/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+
+<script type="text/javascript" src="#" th:src="@{/js/jquery.min.js}"></script>
+<script type="text/javascript" src="/tickets/empMgr/js/jquery.min.js"></script>
+
+<script type="text/javascript" src="#"
+	th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+<script type="text/javascript"
+	src="/tickets/empMgr/bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="#" th:src="@{/js/main.js}"></script>
+<script type="text/javascript" src="/tickets/empMgr/js/main.js"></script>
+<script type="text/javascript">
+	function check(form) {
+		//检查姓名是否填写
+		var account = form.account.value;
+		if (account.length == 0) {
+			alert("请填写用户名！");
+			form.account.focus();
+			return false;
+		}
+		var pwd = form.pwd.value;
+		if (pwd.length == 0) {
+			alert("请填写密码！");
+			form.pwd.focus();
+			return false;
+		}
+	}
+	function login(){
+		 var username=$("#account").val();
+		 var psw=$("#psw").val();
+		if(("XXXX").equal(username)&&("XXX").equal(psw)){
+		    windows.location.href="/XXX/XXX.jsp"
+		   }else{
+		             alert("登录失败，用户名或密码错误")
+		             }
+		}
+</script>
+</head>
+<body style="background: #8bb6eb99;">
+	<!--容器-->
+	<div class="container-fluid">
+		<!--面板-->
+		<div
+			style="margin: auto; width: 40%; height: 420px; position: relative; top: 75px; background: #8bb6eb; border-radius: 15px;">
+			<div
+				style="color: white; text-align: center; border-radius: 1px; padding-top: 10px;">
+				<h2 style="font-size: 45px;">汽车售票管理系统</h2>
+			</div>
+			<div class="col-sm-12">
+				<!--表单-->
+				<form class="form-horizontal" th:action="@{/emp/login}" onSubmit="return check(this);"
+					method="post">
+					<!--隐藏域-->
+					<input type="hidden" name="method" value="login">
+					<hr>
+					<div class="form-group">
+						<div class="input-group col-sm-8 col-sm-offset-2">
+							<span class="input-group-addon" id="basic-addon1"> &nbsp;
+								<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+								&nbsp;
+							</span> <input type="text" name="account" class="form-control"
+								placeholder="请输入账号" aria-describedby="basic-addon1">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group col-sm-8 col-sm-offset-2">
+							<span class="input-group-addon" id="basic-addon2"> &nbsp;
+								<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+								&nbsp;
+							</span> <input type="password" name="pwd" class="form-control"
+								placeholder="请输入密码" aria-describedby="basic-addon2">
+						</div>
+					</div>
+
+					<hr>
+					<div class="form-group">
+						<button type="submit" onclick="login()"
+							class="btn btn-primary col-sm-8 col-sm-offset-2">登录</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	
+	</div>
+	<!-- -添加错误消息对话框 -->
+<div th:include="~{component/dialog::errMsgDialog}"></div>
+</body>
+</html>

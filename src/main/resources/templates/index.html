@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+ <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <!-- Bootstrap -->
+    <link href="#" th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+     <link href="/tickets/empMgr/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+     
+    <script type="text/javascript" src="#" th:src="@{/js/jquery.min.js}" ></script>
+    <script type="text/javascript" src="/tickets/empMgr/js/jquery.min.js" ></script>
+    
+    <script type="text/javascript" src="#" th:src="@{/bootstrap/js/bootstrap.min.js}" ></script>
+    <script type="text/javascript" src="/tickets/empMgr/bootstrap/js/bootstrap.min.js" ></script>
+    
+    <script type="text/javascript" src="#" th:src="@{/js/main.js}" ></script>
+    <script type="text/javascript" src="/tickets/empMgr/js/main.js" ></script>
+     <script type="text/javascript" >
+     
+     function del(){
+         if(confirm("是否删除？")){
+             return true;
+         }
+         else{
+             return false;
+         }
+     }
+     </script>
+     
+<title>主页面</title>
+</head>
+<body>
+<!-- 标题栏 -->
+<div th:replace="~{component/titleBar::titleBar('emp',@{/},${orderIndex},${orderFlag},null)}"></div>
+<!-- body -->
+<div class="container">
+	<div class="row">
+		<!-- 菜单 -->
+		<div class="col-md-2" th:include="~{component/titleBar::mainMenu('emp')}"></div>
+		<!-- 表格 -->
+		<div class="col-md-10">
+			<table class="table table-striped">
+<thead>
+	<tr id="tabTitle">
+		<td  >编号</td>
+		<td  >账号<span class="glyphicon glyphicon-chevron-up"></span></td>
+		<td >姓名</td>
+		<td >性别</td>
+		<td >职位</td>
+		<td >民族</td>
+		<td >入职日期</td>
+		<td >身份证号</td>
+		<td >电话</td>
+		<td >住址</td>
+		<td >操作</td>
+	</tr>
+</thead>
+<tbody>
+	<tr th:each="emp,st:${emps}">
+		<td th:text="${emp.empId}">1</td>
+		<td th:text="${emp.account}">12345678910</td>
+		<td th:text="${emp.realName}">王婉君</td>
+		<td th:switch="${emp.sex}">
+			<p th:case = "1">男</p>
+			<p th:case = "0">女</p>
+		</td>
+		<td th:text="${emp.role.roleName}">售票员</td>
+		<td th:text="${emp.nationality}">维吾尔族</td>
+		<td th:text="${#dates.format(emp.hireDate,'yyyy-MM-dd')}">2000/02/02</td>
+		<td th:text="${emp.idCardNum}">610528199709090000</td>
+		<td th:text="${emp.telephone}">18391301532</td>
+		<td th:text="${emp.address}" style="width:70px">迪拜帆船酒店17楼总统套房</td>
+		
+		<td><a href="#" th:href="'/tickets'+@{/emp/modifyEmpPage/{empId}(empId=${emp.empId})}" >
+				<span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;
+			<a href="#"  th:href="'/tickets'+@{/emp/removeEmpById/{empId}(empId=${emp.empId})}" onclick="return del()">
+				<span class="glyphicon glyphicon-trash"></span></a></td>
+	</tr>
+</tbody>
+</table>
+<!-- 分页 
+<div class="col-md-6 col-md-offset-6" th:include="component/titleBar::splitPage(@{/},'tabTitle')"></div>-->
+		</div>
+	</div>
+</div>
+
+
+</body>
+</html>

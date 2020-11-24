@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>错误界面</title>
+<link href="#" th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+     <link href="/tickets/empMgr/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+     
+    <script type="text/javascript" src="#" th:src="@{/js/jquery.min.js}" ></script>
+    <script type="text/javascript" src="/tickets/empMgr/js/jquery.min.js" ></script>
+    
+    <script type="text/javascript" src="#" th:src="@{/bootstrap/js/bootstrap.min.js}" ></script>
+    <script type="text/javascript" src="/tickets/empMgr/bootstrap/js/bootstrap.min.js" ></script>
+    
+    <script type="text/javascript" src="#" th:src="@{/js/main.js}" ></script>
+    <script type="text/javascript" src="/tickets/empMgr/js/main.js" ></script>
+	<script type="text/javascript">
+	
+	
+	
+	
+	</script>
+</head>
+<body style="background: #8bb6eb99;">
+<!--容器-->
+<div class="container-fluid">
+	<h1>error Page!</h1>
+	<h2 th:text="${errorMsg}"></h2>
+</div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Reg emp</title>
+    <!-- Bootstrap -->
+<link href="#" th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+     <link href="/tickets/empMgr/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+     
+    <script type="text/javascript" src="#" th:src="@{/js/jquery.min.js}" ></script>
+    <script type="text/javascript" src="/tickets/empMgr/js/jquery.min.js" ></script>
+    
+    <script type="text/javascript" src="#" th:src="@{/bootstrap/js/bootstrap.min.js}" ></script>
+    <script type="text/javascript" src="/tickets/empMgr/bootstrap/js/bootstrap.min.js" ></script>
+    
+    <script type="text/javascript" src="#" th:src="@{/js/main.js}" ></script>
+    <script type="text/javascript" src="/tickets/empMgr/js/main.js" ></script>
+     <script type="text/javascript" >
+     	
+     </script>
+</head>
+<body>
+<!-- 标题栏 -->
+<div th:replace="~{component/titleBar::titleBar('emp',@{/},null,null,null)}"></div>
+<!-- body -->
+<div class="container">
+	<div class="row">
+		<!-- 菜单 -->
+		<div class="col-md-2" th:include="~{component/titleBar::mainMenu('emp')}"></div>
+		<!-- 注册表单 -->
+		<div class="col-md-5 col-md-offset-2">
+			<form action="#" th:action="@{/modifyEmp}" method="post">
+			  <div class="form-group">
+			    <label for="empno" >员工编号</label>
+			    <input type="text" class="form-control" id="empno" name="empno" readonly="readonly">
+			  </div>
+			  <div class="form-group">
+						<label for="deptno">账号</label> <input type="text"
+							class="form-control" id="deptno" name="deptno" placeholder="请输入账号">
+					</div>
+					
+					<div class="form-group" id="dnameParDiv">
+						<label for="dname">真实姓名</label> <input type="text"
+							class="form-control" id="dname" name="dname" placeholder="请输入真实姓名"
+							onblur="isdnameExists4Jquery()">
+					</div>
+					<div class="form-group" id="dnameParDiv">
+						<label for="dname">性别</label> <br/>&nbsp;&nbsp;&nbsp;
+							<input id="man" type="radio" checked="checked" name="1" />男&nbsp;&nbsp;&nbsp;&nbsp;
+							<input id="woman" type="radio"  name="1"/>女
+					</div>
+					<div class="form-group" id="dnameParDiv">
+						<label for="dname">民族</label> <input type="text"
+							class="form-control" id="dname" name="dname" placeholder="请输入民族"
+							onblur="isdnameExists4Jquery()">
+					</div>
+					<div class="form-group" id="dnameParDiv">
+						<label for="dname">身份证号</label> <input type="text"
+							class="form-control" id="dname" name="dname" placeholder="请输入您的身份证号"
+							onblur="isdnameExists4Jquery()">
+					</div>
+					<div class="form-group">
+						<label for="hiredate">入职日期</label> 
+						<input type="date" class="form-control" id="hiredate" name="hiredate" placeholder="YYYY-MM-DD">
+					</div>
+
+					<div class="form-group" id="dnameParDiv">
+						<label for="dname">电话</label> <input type="text"
+							class="form-control" id="dname" name="dname" placeholder="请输入电话"
+							onblur="isdnameExists4Jquery()">
+					</div>
+					<div class="form-group">
+						<label for="loc">住址</label><input type="text"
+							class="form-control" id="loc" name="loc" placeholder="请输入住址">
+					</div>
+					<div class="form-group">
+						<label for="dept">职务</label> 
+						<select id="dept" name="dept.deptno" class="form-control">
+							<option value="ACCOUNTING" th:each="dept:${deptList}" th:value="${dept.deptno}" th:text="${dept.deptno+'-'+dept.dname}">ACCOUNTING</option>
+						</select>
+					</div>
+			 <div class="col-md-6 col-md-offset-3">
+						<button type="submit" class="btn btn-primary form-control">保存</button>
+					</div>
+			  
+			  
+			</form>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
